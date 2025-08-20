@@ -28,12 +28,6 @@ This font operates by mapping emoji codepoints to their text representations.
 2. **Glyph Composition** (ccmp): Text representations are created by referencing existing glyphs from the base font
 3. **GSUB Tables**: Emojis that consist of multiple codepoints are handled through OpenType [GSUB (Glyph Substitution) tables](https://learn.microsoft.com/en-us/typography/opentype/spec/gsub)
 
-| Emoji | Codepoint | Description | Fully-Qualified? | Compatible? |
-| - | - | - | - | - |
-| 😀 | `U+1F600` | grinning face | Yes | ✅ |
-| ❤️ | `U+2764` | red heart | No | ✅ |
-| ❤️ | `U+2764 U+FE0F` | red heart with [VS-16](https://www.unicode.org/reports/tr51/#def_emoji_presentation_selector) (`U+FE0F`) | Yes | ❌ |
-
 ## Installation
 
 Download the latest font from the [fonts/](fonts/) directory.
@@ -121,9 +115,9 @@ You will most likely want to modify one of the following:
 
 - [`data/emoji-test.txt`](data/emoji-test.txt)
   - Update with the latest Unicode emoji data
-- [`emoji_mappings.py`](scripts/emoji_mappings.py) 
+- [`scripts/emoji_mappings.py`](scripts/emoji_mappings.py) 
   - Change `_normalize_emoji_name` and `parse_emoji_test` to determine how the font is represented in text
-- [`generate_font.py`](scripts/generate_font.py)
+- [`scripts/generate_font.py`](scripts/generate_font.py)
   - Edit `build_font` to update font metadata
 
 After tweaking the code, rebuild the font by running the `fontforge` command.
@@ -132,10 +126,16 @@ After tweaking the code, rebuild the font by running the `fontforge` command.
 
 *See also: the [Issue tracker](https://github.com/yukidaruma/emoji2text-font/issues) and [Known Issues](https://yukidaruma.github.io/emoji2text-font/known-issues.html) page.*
 
-- Most applications prioritize system emoji fonts over text fonts for emoji with Variation Selector-16 (`U+FE0F`), which results in emoji like ❤️ (`U+2764 U+FE0F`) always rendered in emoji form.
-  - Variation Selector-16 (`U+FE0F`) is an invisible codepoint that specifies the preceding character should be displayed as an emoji. While my font includes glyphs for emoji sequences containing VS-16, most applications prioritize rendering fully-qualified emojis using graphical emoji fonts over text fonts, regardless of your font selection.
+- Most applications prioritize system emoji fonts over text fonts for emoji with [Variation Selector-16](https://www.unicode.org/reports/tr51/#def_emoji_presentation_selector) (`U+FE0F`), which results in emoji like ❤️ (`U+2764 U+FE0F`) always rendered in emoji form.
+  - Variation Selector-16 (`U+FE0F`) is an invisible codepoint that specifies the preceding character should be displayed as an emoji. While my font includes glyphs for emoji sequences containing VS-16, most applications prioritize rendering emojis with VS-16 using graphical emoji fonts over text fonts, regardless of your font selection.
     A potential workaround would be to configure my font to identify itself as an emoji font, but I have not figured out how to do so yet (#4).
 - Emojis with long names can be visually broken (#1), likely capped at 16-bit signed integer limit (`32767 / 600 ~= 54 letters`).
+
+| Emoji | Codepoint | Description | Fully-Qualified? | Usable? |
+| - | - | - | - | - |
+| 😀 | `U+1F600` | grinning face | Yes | ✅ |
+| ❤️ | `U+2764` | red heart | No | ✅ |
+| ❤️ | `U+2764 U+FE0F` | red heart with VS-16 (`U+FE0F`) | Yes | ❌ |
 
 ## Licenses
 
