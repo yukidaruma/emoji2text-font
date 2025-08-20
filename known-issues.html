@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emoji2Text Known Issues</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Source+Code+Pro:ital@0;1&display=swap"
+    rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Source Code Pro';
+      src: url('source-fonts/SourceCodePro-Regular.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'Emoji2Text';
+      src:
+        url('fonts/Emoji2Text.ttf.woff2') format('woff2'),
+        url('fonts/Emoji2Text.ttf') format('ttf');
+    }
+
+    @font-face {
+      font-family: 'Emoji2Text-OTF';
+      src:
+        url('fonts/Emoji2Text.otf.woff') format('woff'),
+        url('fonts/Emoji2Text.otf') format('otf');
+    }
+
+    body {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .source {
+      color: #f00;
+      font-family: 'Source Code Pro', monospace;
+    }
+
+    .emoji2text {
+      color: #00f;
+      font-family: 'Emoji2Text', monospace;
+    }
+
+    .emoji2text-otf {
+      color: #0f0;
+      font-family: 'Emoji2Text-OTF', monospace;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Emoji2Text - Known Issues</h1>
+
+  <p>
+    <a href="https://github.com/yukidaruma/emoji2text-font">GitHub repository</a>
+  </p>
+
+  <p>
+    <a href="demo.html">[Demo]</a> | <span aria-current="page">[Known Issues]</span>
+  </p>
+
+  <hr>
+
+  <p>
+    Red: Source Code Pro<br>
+    Blue: Emoji2Text (TTF)<br>
+    Green: Emoji2Text (OTF)
+  </p>
+
+  <h2>Glyph clipping at small sizes (OTF-specific)</h2>
+  <div>
+    <span class="source" style="background-color: #ddd">face_with_tears_of_joy</span><br>
+    <span class="emoji2text" style="background-color: #ddd">😂</span><br>
+    <span class="emoji2text-otf" style="background-color: #ddd">😂</span><br>
+    <span class="emoji2text-otf" style="background-color: #ddd; font-size: 150%">😂</span>
+  </div>
+</body>
+
+</html>
