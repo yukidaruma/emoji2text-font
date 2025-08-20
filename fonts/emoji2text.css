@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'Emoji2Text';
+  src: url('./Emoji2Text.ttf.woff2') format('woff2'),
+       url('./Emoji2Text.ttf') format('truetype'),
+       url('./Emoji2Text.otf.woff') format('woff'),
+       url('./Emoji2Text.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
