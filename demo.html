@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emoji2Text Demo Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Source+Code+Pro:ital@0;1&display=swap"
+    rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Emoji2Text';
+      src:
+        url('fonts/Emoji2Text.ttf.woff2') format('woff2'),
+        url('fonts/Emoji2Text.ttf') format('ttf'),
+        url('fonts/Emoji2Text.otf.woff') format('woff'),
+        url('fonts/Emoji2Text.otf') format('truetype');
+      font-display: block;
+      font-weight: 400;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      word-break: break-word;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 8px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    .comparison-table th {
+      text-align: center;
+      background: #f5f5f5;
+      font-weight: bold;
+    }
+
+    .comparison-table .default-emoji-col {
+      text-align: center;
+      width: 66px;
+    }
+
+    .comparison-table td.default-emoji-col,
+    .comparison-table td.noto-col {
+      font-size: 24px;
+    }
+
+    .comparison-table .name-col {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 14px;
+    }
+
+    .comparison-table .font-col {
+      font-family: 'Emoji2Text';
+      font-size: 14px;
+      /* 184.8px content + 16px padding (8px each side) */
+      width: 200.8px;
+    }
+
+    .comparison-table .noto-col {
+      font-family: 'Noto Color Emoji';
+      text-align: center;
+      width: 66px;
+    }
+
+    .comparison-table td.codepoint-col {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 12px;
+      width: 196px;
+    }
+
+    .footnote {
+      font-size: 14px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .experiment-textarea {
+      width: 100%;
+      height: 120px;
+      font-family: 'Emoji2Text', 'Source Code Pro', monospace;
+      font-size: 16px;
+      padding: 12px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+      font-variant-emoji: text;
+    }
+
+    .experiment-textarea:focus {
+      outline: none;
+      border-color: #666;
+    }
+
+    @media (max-width: 832px) {
+      body {
+        padding: 16px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .comparison-table .codepoint-col {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .comparison-table th,
+      .comparison-table td {
+        padding: 4px;
+      }
+
+      .comparison-table td.default-emoji-col,
+      .comparison-table td.noto-col {
+        font-size: 20px;
+      }
+
+      .comparison-table .name-col {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Emoji2Text Demo Page</h1>
+
+  <p>
+    <a href="https://github.com/yukidaruma/emoji2text-font">GitHub repository</a>
+  </p>
+
+  <div>
+    <h2>Try It Yourself</h2>
+    <p>
+      Type or paste emojis below to see how they are represented in the Emoji2Text font.<br>
+      ...or try selecting the text below to see that 'grinning_face' is just one character!
+    </p>
+    <textarea class="experiment-textarea">😀
+👋
+🔥
+🇺🇸
+👨‍💻</textarea>
+  </div>
+
+  <h2>Basic Emojis</h2>
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th class="default-emoji-col">Emoji</th>
+        <th class="name-col">Name</th>
+        <th class="codepoint-col">Codepoint</th>
+        <th class="font-col">Emoji2Text</th>
+        <th class="noto-col">Noto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="default-emoji-col">♥</td>
+        <td class="name-col">heart_suit</td>
+        <td class="codepoint-col">U+2665</td>
+        <td class="font-col">♥</td>
+        <td class="noto-col">♥</td>
+      </tr>
+      <tr>
+        <td class="default-emoji-col">❤</td>
+        <td class="name-col">red_heart</td>
+        <td class="codepoint-col">U+2764</td>
+        <td class="font-col">❤</td>
+        <td class="noto-col">❤</td>
+      </tr>
+      <tr>
+        <td class="default-emoji-col">❤️</td>
+        <td class="name-col">red_heart<br>(with Variation Selector-16)</td>
+        <td class="codepoint-col">U+2764 U+FE0F</td>
+        <td class="font-col">❤️</td>
+        <td class="noto-col">❤️</td>
+      </tr>
+      <tr>
+        <td class="default-emoji-col">😀</td>
+        <td class="name-col">grinning_face</td>
+        <td class="codepoint-col">U+1F600</td>
+        <td class="font-col">😀</td>
+        <td class="noto-col">😀</td>
+      </tr>
+      <tr>
+        <td class="default-emoji-col">😂</td>
+        <td class="name-col">face_with_tears_of_joy</td>
+        <td class="codepoint-col">U+1F602</td>
+        <td class="font-col">😂</td>
+        <td class="noto-col">😂</td>
+      </tr>
+      <tr>
+        <td class="default-emoji-col">👍</td>
+        <td class="name-col">thumbs_up</td>
+        <td class="codepoint-col">U+1F44D</td>
+        <td class="font-col">👍</td>
+        <td class="noto-col">👍</td>
+      </tr>
+      <tr>
+        <td class="default-emoji-col">🔥</td>
+        <td class="name-col">fire</td>
+        <td class="codepoint-col">U+1F525</td>
+        <td class="font-col">🔥</td>
+        <td class="noto-col">🔥</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Skin Tone Variations</h2>
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th class="default-emoji-col">Emoji</th>
+        <th class="name-col">Name</th>
+        <th class="codepoint-col">Codepoint</th>
+        <th class="font-col">Emoji2Text</th>
+        <th class="noto-col">Noto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="default-emoji-col">👋</td>
+        <td class="name-col">waving_hand</td>
+        <td class="codepoint-col">U+1F44B</td>
+        <td class="font-col">👋</td>
+        <td class="noto-col">👋</td>
+      </tr>
+      <tr>
+        <td class="default-emoji-col">👋🏻</td>
+        <td class="name-col">waving_hand<br>(light skin tone)</td>
+        <td class="codepoint-col">U+1F44B U+1F3FB</td>
+        <td class="font-col">👋🏻</td>
+        <td class="noto-col">👋🏻</td>
+      </tr>
+      <tr>
+        <td class="default-emoji-col">👋🏽</td>
+        <td class="name-col">waving_hand<br>(medium skin tone)</td>
+        <td class="codepoint-col">U+1F44B U+1F3FD</td>
+        <td class="font-col">👋🏽</td>
+        <td class="noto-col">👋🏽</td>
+      </tr>
+      <tr>
+        <td class="default-emoji-col">👋🏿</td>
+        <td class="name-col">waving_hand<br>(dark skin tone)</td>
+        <td class="codepoint-col">U+1F44B U+1F3FF</td>
+        <td class="font-col">👋🏿</td>
+        <td class="noto-col">👋🏿</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Nation Flags</h2>
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th class="default-emoji-col">Emoji</th>
+        <th class="name-col">Name</th>
+        <th class="codepoint-col">Codepoint</th>
+        <th class="font-col">Emoji2Text</th>
+        <th class="noto-col">Noto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="default-emoji-col">🇯🇵</td>
+        <td class="name-col">flag_jp</td>
+        <td class="codepoint-col">U+1F1EF U+1F1F5</td>
+        <td class="font-col">🇯🇵</td>
+        <td class="noto-col">🇯🇵</td>
+      </tr>
+      <tr>
+        <td class="default-emoji-col">🇺🇸</td>
+        <td class="name-col">flag_us</td>
+        <td class="codepoint-col">U+1F1FA U+1F1F8</td>
+        <td class="font-col">🇺🇸</td>
+        <td class="noto-col">🇺🇸</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Complex Sequences</h2>
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th class="default-emoji-col">Emoji</th>
+        <th class="name-col">Name</th>
+        <th class="codepoint-col">Codepoint</th>
+        <th class="font-col">Emoji2Text</th>
+        <th class="noto-col">Noto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="default-emoji-col">👨‍💻</td>
+        <td class="name-col">man_technologist</td>
+        <td class="codepoint-col">U+1F468 U+200D U+1F4BB</td>
+        <td class="font-col">👨‍💻</td>
+        <td class="noto-col">👨‍💻</td>
+      </tr>
+      <tr>
+        <td class="default-emoji-col">👨‍👩‍👧‍👦</td>
+        <td class="name-col">family</td>
+        <td class="codepoint-col">U+1F468 U+200D U+1F469 U+200D U+1F467 U+200D U+1F466</td>
+        <td class="font-col">👨‍👩‍👧‍👦</td>
+        <td class="noto-col">👨‍👩‍👧‍👦</td>
+      </tr>
+      <tr>
+        <td class="default-emoji-col">🏴󠁧󠁢󠁥󠁮󠁧󠁿</td>
+        <td class="name-col">flag_england</td>
+        <td class="codepoint-col">U+1F3F4 U+E0067 U+E0062 U+E0065 U+E006E U+E0067 U+E007F</td>
+        <td class="font-col">🏴󠁧󠁢󠁥󠁮󠁧󠁿</td>
+        <td class="noto-col">🏴󠁧󠁢󠁥󠁮󠁧󠁿</td>
+      </tr>
+      <tr>
+        <td class="default-emoji-col">🧑🏼‍❤‍🧑🏾</td>
+        <td class="name-col">couple_with_heart</td>
+        <td class="codepoint-col">U+1F9D1 U+1F3FC U+200D U+2764 U+200D U+1F9D1 U+1F3FE</td>
+        <td class="font-col">🧑🏼‍❤‍🧑🏾</td>
+        <td class="noto-col">🧑🏼‍❤‍🧑🏾</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Non-standard Emojis</h2>
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th class="default-emoji-col">Emoji</th>
+        <th class="name-col">Name</th>
+        <th class="codepoint-col">Codepoint</th>
+        <th class="font-col">Emoji2Text</th>
+        <th class="noto-col">Noto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="default-emoji-col">🇦</td>
+        <td class="name-col">regional_indicator_a</td>
+        <td class="codepoint-col">U+1F1E6</td>
+        <td class="font-col">🇦</td>
+        <td class="noto-col">🇦</td>
+      </tr>
+      <tr>
+        <td class="default-emoji-col">🇿</td>
+        <td class="name-col">regional_indicator_z</td>
+        <td class="codepoint-col">U+1F1FF</td>
+        <td class="font-col">🇿</td>
+        <td class="noto-col">🇿</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="footnote">
+    Note: While Unicode recommends against using regional indicators alone, some emoji implementations
+    (for example Noto font, Twitter font, Discord app) treat them as if they are standalone emoji.
+    See: <a href="https://www.unicode.org/reports/tr51/#def_basic_emoji_set">Unicode Technical Report #51</a>
+  </p>
+</body>
+
+</html>

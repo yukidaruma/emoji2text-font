@@ -1,4 +1,7 @@
 {
   "editor.defaultFormatter": "ms-python.autopep8",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  }
 }
