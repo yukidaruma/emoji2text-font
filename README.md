@@ -1,6 +1,8 @@
 # Emoji2Text Font
 
-A font that transforms emojis into their names rather than representing them graphically. Built using FontForge and its Python scripting API, it supports the complete emoji set up to Unicode 17.0.
+A font that transforms emojis into their names rather than representing them graphically. Built using [FontForge](https://fontforge.org/) and its [Python Scripting API](https://fontforge.org/docs/scripting/python.html), it supports the complete emoji set up to Unicode 17.0.
+
+Try Emoji2Text at [Live Demo](https://yukidaruma.github.io/emoji2text-font/demo.html).
 
 ## Overview
 
@@ -10,51 +12,27 @@ This project provides both pre-built font files and the scripts to generate cust
 
 ## Features
 
-- Supports emojis up to Unicode 17.0
+- Supports [emojis up to Unicode 17.0](https://unicode.org/Public/emoji/17.0/emoji-test.txt)
 - Handles complex emoji sequences including but not limited to:
   - Skin tone modifiers
-  - Zero-width joiner (ZWJ) sequences
+  - Zero-width joiner (ZWJ: `U+200D`) sequences
   - National flags and regional indicators
-- Multiple font formats: OTF, TTF, WOFF, and WOFF2
-- Customizable base font for consistent typography
-- Optimized file sizes through glyph composition
-
-## Demo
-
-Try the font in action: [Live Demo](https://yukidaruma.github.io/emoji2text-font/demo.html)
 
 ## How It Works
 
-The font operates by mapping emoji codepoints to text representations composed from a limited character set:
-`#()*0123456789_abcdefghijklmnopqrstuvwxyz`
+This font operates by mapping emoji codepoints to their text representations.
 
 ### Technical Implementation
 
 1. **Character Mapping**: Each emoji codepoint is mapped to its corresponding text name based on Unicode annotations
 2. **Glyph Composition** (ccmp): Text representations are created by referencing existing glyphs from the base font
-3. **GSUB Tables**: Emojis that consist of multiple codepoints are handled through OpenType GSUB (Glyph Substitution) tables
+3. **GSUB Tables**: Emojis that consist of multiple codepoints are handled through OpenType [GSUB (Glyph Substitution) tables](https://learn.microsoft.com/en-us/typography/opentype/spec/gsub)
 
 | Emoji | Codepoint | Description | Fully-Qualified? | Compatible? |
 | - | - | - | - | - |
 | 😀 | `U+1F600` | grinning face | Yes | ✅ |
 | ❤️ | `U+2764` | red heart | No | ✅ |
-| ❤️ | `U+2764 U+FE0F` | red heart with VS-16 | Yes | ❌ |
-
-## Application Compatibility
-
-I have tested this font across different applications on Windows 11:
-
-| Application | Compatible? |
-| - | - |
-| Google Chrome | ✅ (\*1) |
-| Visual Studio Code | ✅ |
-| Microsoft Excel/Word | ✅ |
-| Microsoft PowerPoint | ❌ (\*2) |
-| Windows Terminal | ✅ (\*3) |
-
-\*1: The OTF version of the font may cause rendering issues on Google Chrome (#1). For stability, I recommend using the TTF version.
-\*2: It appears impossible to change the emoji font in PowerPoint.
-\*3: This is not particularly useful because the font does not fit within a two-column layout.
+| ❤️ | `U+2764 U+FE0F` | red heart with [VS-16](https://www.unicode.org/reports/tr51/#def_emoji_presentation_selector) (`U+FE0F`) | Yes | ❌ |
 
 ## Installation
 
@@ -62,7 +40,7 @@ Download the latest font from the [fonts/](fonts/) directory.
 
 ### Using on Websites
 
-#### Option 1: Self-host the Font
+#### Option 1: Self-host this Font
 
 Download the font files and add the following to your CSS:
 
@@ -96,6 +74,22 @@ Then use the font in your CSS:
   font-variant-emoji: text;
 }
 ```
+
+### Application Compatibility
+
+I have tested this font across different applications on Windows 11:
+
+| Application | Compatible? |
+| - | - |
+| Google Chrome | ✅ (\*1) |
+| Visual Studio Code | ✅ |
+| Microsoft Excel/Word | ✅ |
+| Microsoft PowerPoint | ❌ (\*2) |
+| Windows Terminal | ✅ (\*3) |
+
+\*1: The OTF version of this font may cause rendering issues on Google Chrome (#1). For stability, I recommend using the TTF version.  
+\*2: It appears impossible to change the emoji font in PowerPoint.  
+\*3: This is not particularly useful since the character width exceeds the two-column layout.
 
 ## Building from Source
 
@@ -155,8 +149,8 @@ This project contains files released under different licenses:
 ## Acknowledgments
 
 - FontForge for providing an excellent tool to work with fonts programmatically
-- Adobe for Source Code Pro font used as the default base
-- Google Noto project for emoji reference implementation
+- Adobe for [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) font used as the default base
+- Google Noto project for [emoji reference implementation](https://fonts.google.com/noto/specimen/Noto+Color+Emoji)
 
 ----
 
