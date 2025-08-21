@@ -59,19 +59,19 @@
       font-size: 24px;
     }
 
-    .comparison-table .name-col {
+    .comparison-table .name-col:not(th) {
       font-family: 'Source Code Pro', monospace;
       font-size: 14px;
     }
 
-    .comparison-table .font-col {
+    .comparison-table .font-col:not(th) {
       font-family: 'Emoji2Text';
       font-size: 14px;
       /* 184.8px content + 16px padding (8px each side) */
       width: 200.8px;
     }
 
-    .comparison-table .noto-col {
+    .comparison-table .noto-col:not(th) {
       font-family: 'Noto Color Emoji';
       text-align: center;
       width: 66px;
@@ -371,7 +371,7 @@
 
   <p class="footnote">
     Note: While Unicode recommends against using regional indicators alone, some emoji implementations
-    (for example Noto font, Twitter font, Discord app) treat them as if they are standalone emoji.
+    (for example Noto font, Twitter Emoji font, Discord app) treat them as if they are standalone emoji.
     See: <a href="https://www.unicode.org/reports/tr51/#def_basic_emoji_set">Unicode Technical Report #51</a>
   </p>
 </body>
