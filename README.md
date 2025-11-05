@@ -12,7 +12,7 @@ This project provides both pre-built font files and the scripts to generate cust
 
 ## Features
 
-- Supports [emojis up to Unicode 17.0](https://unicode.org/Public/emoji/17.0/emoji-test.txt)
+- Supports [emojis up to Unicode 17.0](https://unicode.org/Public/17.0.0/emoji/emoji-test.txt)
 - Handles complex emoji sequences including but not limited to:
   - Skin tone modifiers
   - Zero-width joiner (ZWJ: `U+200D`) sequences
